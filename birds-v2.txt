@@ -1,0 +1,105 @@
+birds.html
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>BudgiBook - Oiseaux</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>BudgiBook</h1>
+
+  <div id="app">
+    <h2>Mes oiseaux</h2>
+
+    <button onclick="location.href='dashboard.html'">← Retour</button>
+    <button onclick="location.href='bird-form.html'">Ajouter un oiseau</button>
+
+    <div id="birdList" class="bird-cards"></div>
+  </div>
+
+  <script src="birds.js"></script>
+</body>
+</html>
+
+---
+
+birds.js
+
+let birds = JSON.parse(localStorage.getItem('budgibook_birds') || '[]');
+
+function saveBirds() {
+  localStorage.setItem('budgibook_birds', JSON.stringify(birds));
+}
+
+function renderBirds() {
+  const list = document.getElementById('birdList');
+
+  if (!birds.length) {
+    list.innerHTML = `<p>Aucun oiseau enregistré pour le moment.</p>`;
+    return;
+  }
+
+  list.innerHTML = birds.map((bird, index) => `
+    <div class="bird-card">
+      <h3>${bird.name || 'Sans nom'}</h3>
+      <p><strong>Bague :</strong> ${bird.ring || 'Non renseignée'}</p>
+      <p><strong>Sexe :</strong> ${bird.sex || 'Non renseigné'}</p>
+      <p><strong>Mutation :</strong> ${bird.mutation || 'Non renseignée'}</p>
+      <p><strong>Naissance :</strong> ${bird.birth || 'Non renseignée'}</p>
+      <p><strong>Statut :</strong> ${bird.status || 'Non renseigné'}</p>
+      <p><strong>Notes :</strong> ${bird.notes || 'Aucune note'}</p>
+      <button onclick="deleteBird(${index})">Supprimer</button>
+    </div>
+  `).join('');
+}
+
+function deleteBird(index) {
+  birds.splice(index, 1);
+  saveBirds();
+  renderBirds();
+}
+
+renderBirds();
+
+---
+
+Ajoute aussi dans style.css :
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.bird-cards {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.bird-card {
+  background: #eef2ff;
+  padding: 16px;
+  border-radius: 14px;
+}
+
+.bird-card h3 {
+  margin-top: 0;
+}
