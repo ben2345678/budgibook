@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajouter un oiseau</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Nouvel oiseau</h1>
+
+  <div id="app">
+    <label>Nom</label>
+    <input id="name">
+
+    <label>Bague</label>
+    <input id="ring">
+
+    <label>Sexe</label>
+    <select id="sex">
+      <option value="">-</option>
+      <option value="Mâle">Mâle</option>
+      <option value="Femelle">Femelle</option>
+    </select>
+
+    <label>Mutation</label>
+    <input id="mutation">
+
+    <label>Date de naissance</label>
+    <input id="birth" type="date">
+
+    <label>Statut</label>
+    <input id="status">
+
+    <label>Notes</label>
+    <textarea id="notes"></textarea>
+
+    <button onclick="saveBird()">Enregistrer</button>
+    <button onclick="location.href='birds.html'">Annuler</button>
+  </div>
+
+  <script src="bird-form.js"></script>
+</body>
+</html>
