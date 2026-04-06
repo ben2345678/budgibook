@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>BudgiBook - Profil élevage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>BudgiBook</h1>
+
+  <div id="app">
+    <h2>Profil élevage</h2>
+    <button onclick="location.href='dashboard.html'">← Retour</button>
+
+    <label>Nom de l'élevage</label>
+    <input id="farmName" type="text">
+
+    <label>Région</label>
+    <input id="region" type="text">
+
+    <label>Contact</label>
+    <input id="contact" type="text">
+
+    <label>Description</label>
+    <textarea id="description"></textarea>
+
+    <button onclick="saveProfile()">Enregistrer</button>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
